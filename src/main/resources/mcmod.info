@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ff",
+  "name": "Fossil Finders",
+  "description": "A vanilla styled dinosaur mod!",
+  "version": "1.0",
+  "mcversion": "1.12+",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["superlord9362"],
+  "credits": "superlord9362 for coding, and Anomalocaris101 for modelling and texturing",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
