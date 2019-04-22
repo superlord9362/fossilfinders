@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import superlord.fossilfinders.Main;
 import superlord.fossilfinders.entity.EntityHibbertopterus;
+import superlord.fossilfinders.entity.EntityRhizodus;
 import superlord.fossilfinders.init.ModBlocks;
 import superlord.fossilfinders.init.ModItems;
 import superlord.fossilfinders.util.IHasModel;
@@ -23,6 +24,7 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID, "hibbertopterus"), EntityHibbertopterus.class, "hibbertopterus", entityId++, Main.instance, 64, 3, true, 0x995515, 0x000000);
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID, "rhizodus"), EntityRhizodus.class, "rhizodus", entityId++, Main.instance, 64, 3, true, 0x433A37, 0x000000);
     }
     
     @SubscribeEvent
