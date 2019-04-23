@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "ff:blocks/dna_decoder_top_off",
+        "front": "ff:blocks/dna_decoder_front_off",
+        "side": "ff:blocks/dna_decoder_side",
+        "bottom": "ff:blocks/dna_decoder_side"
+    }
+}

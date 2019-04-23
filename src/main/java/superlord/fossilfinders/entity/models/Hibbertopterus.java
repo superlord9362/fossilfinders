@@ -3,6 +3,7 @@ package superlord.fossilfinders.entity.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 import net.soggymustache.bookworm.client.animation.part.BookwormModelBase;
 import net.soggymustache.bookworm.client.animation.part.BookwormModelRenderer;
@@ -118,36 +119,37 @@ public class Hibbertopterus extends BookwormModelBase {
     
     @Override
    	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-   		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);	
-   		float speed = 2.1F, degree = 1.3F;
-   		
-   			limbSwing = entityIn.ticksExisted;
-   			limbSwingAmount = 0.3F; 
+   		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);		
+		float speed = 2.1F, degree = 1.3F;
+		
+		
+		speed = 1.9F;
 
-   			speed = 1.3F;
-   		
-   		this.Body.offsetY = -0.05F;	
-   		this.Telson.offsetY = -0.1F;
-   		
-   		this.Telson.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.3F -0.05F;   	
-   		this.Tail.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.3F -0.05F;      			
-   		this.Body.rotateAngleZ = MathHelper.cos(limbSwing * (0.5F * 0.7F)) * limbSwingAmount * 0.3F;
-   		  		
-   		this.LLeg1.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
-   		this.LLeg2.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
-   		this.LLeg3.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
-   		this.LLeg1.offsetZ = -0.05F;
-   		this.LLeg3.offsetZ = 0.05F;
+        this.Body.offsetY = -0.05F;
+        this.Telson.offsetY = -0.1F;
 
-   	
-   		this.RLeg1.rotateAngleY = MathHelper.cos(1 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
-   		this.RLeg2.rotateAngleY = MathHelper.cos(2 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
-   		this.RLeg3.rotateAngleY = MathHelper.cos(3 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
-   		this.RLeg1.offsetZ = -0.05F;
-   		this.RLeg3.offsetZ = 0.05F;	
+        this.Telson.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.3F -0.05F;
+        this.Tail.rotateAngleY = MathHelper.cos(limbSwing * (0.3F * speed)) * limbSwingAmount * 0.3F -0.05F;
+        this.Body.rotateAngleZ = MathHelper.cos(limbSwing * (0.5F * 0.7F)) * limbSwingAmount * 0.3F;
 
-   		
-    	}
-   	}
-    
+        this.LLeg1.rotateAngleY = MathHelper.cos(1 + limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
+        this.LLeg2.rotateAngleY = MathHelper.cos(2 + limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
+        this.LLeg3.rotateAngleY = MathHelper.cos(3 + limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
+        this.LLeg1.rotateAngleZ = MathHelper.cos(1 + limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
+        this.LLeg2.rotateAngleZ = MathHelper.cos(2 + limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
+        this.LLeg3.rotateAngleZ = MathHelper.cos(3 + limbSwing * (0.3F * speed)) * limbSwingAmount * 0.5F - 0.05F;
+        this.LLeg1.offsetZ = -0.05F;
+        this.LLeg3.offsetZ = 0.05F;
+
+        this.RLeg1.rotateAngleY = MathHelper.cos(1 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
+        this.RLeg2.rotateAngleY = MathHelper.cos(2 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
+        this.RLeg3.rotateAngleY = MathHelper.cos(3 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
+        this.RLeg1.rotateAngleZ = MathHelper.cos(1 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
+        this.RLeg2.rotateAngleZ = MathHelper.cos(2 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
+        this.RLeg3.rotateAngleZ = MathHelper.cos(3 + limbSwing * (0.3F * speed)) * limbSwingAmount * -0.5F - 0.05F;
+        this.RLeg1.offsetZ = -0.05F;
+        this.RLeg3.offsetZ = 0.05F;
+		   		
+    }
+}
    

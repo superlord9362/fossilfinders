@@ -1,0 +1,25 @@
+{
+
+    "variants": 
+
+    {
+
+        "burning=false,facing=north": { "model": "ff:decoder" },
+
+        "burning=false,facing=east": { "model": "ff:decoder", "y": 90 },
+
+        "burning=false,facing=south": { "model": "ff:decoder", "y": 180 },
+
+        "burning=false,facing=west": { "model": "ff:decoder", "y": 270 },
+
+        "burning=true,facing=north": { "model": "ff:decoder_on"},
+
+        "burning=true,facing=east": { "model": "ff:decoder_on", "y": 90 },
+
+        "burning=true,facing=south": { "model": "ff:decoder_on", "y": 180 },
+
+        "burning=true,facing=west": { "model": "ff:decoder_on", "y":270  }
+
+    }
+
+}

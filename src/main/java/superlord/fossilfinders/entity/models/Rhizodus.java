@@ -23,6 +23,8 @@ public class Rhizodus extends ModelBase {
     public ModelRenderer TailFin;
     public ModelRenderer TopFin;
     public ModelRenderer TopFin_1;
+    protected float childYOffset = 8.0F;
+    protected float childZOffset = 4.0F;
 
     public Rhizodus() {
         this.textureWidth = 128;
@@ -74,17 +76,29 @@ public class Rhizodus extends ModelBase {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
-        GlStateManager.pushMatrix();
-        GlStateManager.scale(1D / modelScale[0], 1D / modelScale[1], 1D / modelScale[2]);
-        this.Body1.render(f5);
-        GlStateManager.popMatrix();
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    	if (this.isChild) {
+            float f6 = 2.0F;
+            GlStateManager.pushMatrix();
+            GlStateManager.translate(0.0F, this.childYOffset * f5, this.childZOffset * f5);
+            GlStateManager.popMatrix();
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(0.5F, 0.5F, 0.5F);
+            GlStateManager.translate(0.0F, 23.0F * f5, 0.0F);
+            this.Body1.render(f5);
+            GlStateManager.popMatrix();
+        } else {
+        	GlStateManager.pushMatrix();
+        	GlStateManager.scale(1D / modelScale[0], 1D / modelScale[1], 1D / modelScale[2]);
+        	this.Body1.render(f5);
+        	GlStateManager.popMatrix();
+        }
     }
     
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
     	float XAngle = headPitch / 57.29578F;
     	float YAngle = netHeadYaw / 57.29578F;
-        this.Body2.rotateAngleY = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.Body2.rotateAngleY = MathHelper.cos(limbSwing * 0.6662F) * 0.8F * limbSwingAmount;
     }
 
     /**

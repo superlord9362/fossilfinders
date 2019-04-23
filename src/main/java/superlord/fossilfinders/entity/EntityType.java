@@ -4,7 +4,8 @@ import net.minecraft.entity.Entity;
 
 public enum EntityType {
 	
-	HIBBERTOPTERUS(EntityHibbertopterus.class, MobType.EURYPTERIDA, TimePeriod.PALEOZOIC, Diet.CARNIVORE);
+	HIBBERTOPTERUS(EntityHibbertopterus.class, MobType.EURYPTERIDA, TimePeriod.PALEOZOIC, Diet.CARNIVORE),
+	RHIZODUS(EntityRhizodus.class, MobType.FISH, TimePeriod.PALEOZOIC, Diet.CARNIVORE);
 
 	private final Class<? extends Entity> entity;
 	public MobType type;

@@ -5,7 +5,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 
 import net.minecraft.entity.*;
-
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -17,7 +18,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
 
 import net.minecraft.entity.player.EntityPlayer;
-
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 
 import net.minecraft.init.Items;
@@ -90,6 +91,9 @@ public abstract class EntityAIWanderSwim extends EntityTameable {
 
     	this.tasks.addTask(1, new EntityAIWander(this, 3.0D));
         this.tasks.addTask(1, new EntityAILookIdle(this));
+        this.tasks.addTask(5, new EntityAIAttackMelee(this, 1.0D, true));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, EntityHibbertopterus.class, false));
 
     }
 
@@ -114,9 +118,36 @@ public abstract class EntityAIWanderSwim extends EntityTameable {
         super.applyEntityAttributes();
 
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
-
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
+    }
+    
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        if (this.isEntityInvulnerable(source)) {
+            return false;
+        } else {
+            Entity entity = source.getTrueSource();
 
+            if (this.aiSit != null) {
+                this.aiSit.setSitting(false);
+            }
+
+            if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow)) {
+                amount = (amount + 1.0F) / 2.0F;
+            }
+
+            return super.attackEntityFrom(source, amount);
+        }
+    }
+
+    public boolean attackEntityAsMob(Entity entityIn) {
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+
+        if (flag) {
+            this.applyEnchantments(this, entityIn);
+        }
+
+        return flag;
     }
 
 
